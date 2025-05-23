@@ -12,10 +12,17 @@ public class RecieptWriter {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
             String dateTime = getDateTime();
-            writer.write("DELIcious Sandwich\n");
+            writer.write("-------------------------------------------------\n");
+            writer.write("\t\t\t\tDELIcious Sandwich\n");
             writer.write(dateTime);
+            writer.write("\n=================================================");
             writer.newLine();
-            writer.write("Thank you for dining at DELIcious Sandwich\n");
+
+
+            writer.write("-------------------------------------------------\n");
+            writer.write("\tThank you for dining at DELIcious Sandwich\n");
+            writer.write("=================================================");
+
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException("Error writing file: ",e);
