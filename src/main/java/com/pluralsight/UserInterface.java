@@ -24,6 +24,23 @@ public class UserInterface {
                             case 3:
                                 break;
                             case 4:
+                                boolean confRunning = true;
+                                while(confRunning){
+                                    int confInput = confirmation();
+                                    switch(confInput){
+                                        case 1:
+                                            RecieptWriter.saveReceipt();
+                                            RecieptWriter.printReceipt();
+                                            confRunning = false;
+                                            orderRunning = false;
+                                            appRunning = false;
+                                            break;
+                                        case 2:
+                                            confRunning = false;
+                                            System.out.println("Returning to ordering menu");
+                                            break;
+                                    }
+                                }
                                 break;
                             case 0:
                                 orderRunning = false;
@@ -73,7 +90,7 @@ public class UserInterface {
     public static int homeScreen(){
         int choice = -1;
         System.out.println("\n\n" +
-                "Welcome to The DELIcious Sandwiches" +
+                "Welcome to DELIcious Sandwiches" +
                 "\n\t1) New Order" +
                 "\n\t0) Exit" +
                 "\nWhat would you like to do?");
@@ -114,6 +131,27 @@ public class UserInterface {
             System.out.println("Invalid input!");
         }
         return choice;
+    }
+    public static int confirmation(){
+        int confirm = -1;
+        System.out.println("\n\n" +
+                "Please confirm the order" +
+                "\n\t1) Confirm order" +
+                "\n\t2) Change order" +
+                "\nWhat would you like to do?");
+        if(myScanner.hasNextInt()) {
+            confirm = myScanner.nextInt();
+            myScanner.nextLine();
+            if (confirm == 1 || confirm == 2) {
+                return confirm;
+            } else {
+                System.out.println("Please choose a valid input (0 or 1)");
+            }
+        }else{
+            myScanner.nextLine();
+            System.out.println("Invalid input!");
+        }
+        return confirm;
     }
 
 }
