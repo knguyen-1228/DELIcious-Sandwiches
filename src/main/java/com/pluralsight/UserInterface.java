@@ -7,7 +7,7 @@ public class UserInterface {
     static Scanner myScanner = new Scanner(System.in);
 
     public static void display(){
-        loadingBar("Loading", 25,60);
+        /*loadingBar("Loading", 25,60);*/
         boolean appRunning = true;
         while(appRunning){
             int userChoice = homeScreen();
@@ -18,6 +18,33 @@ public class UserInterface {
                         int orderChoice = orderScreen();
                         switch(orderChoice){
                             case 1:
+                                boolean sandwichRunning = true;
+                                while(sandwichRunning){
+                                    int sandwichChoice = sandwichScreen();
+                                    switch (sandwichChoice){
+                                        case 1:
+                                            Sandwiches.breadType(myScanner);
+                                            break;
+                                        case 2:
+                                            Sandwiches.sandwichSize(myScanner);
+                                            break;
+                                        case 3:
+                                            Sandwiches.addMeat(myScanner);
+                                            Sandwiches.addCheese(myScanner);
+                                            Sandwiches.addToppings(myScanner);
+                                            Sandwiches.addSauce(myScanner);
+                                            break;
+                                        case 4:
+                                            Sandwiches.isToasted(myScanner);
+                                            break;
+                                        case 0:
+                                            sandwichRunning = false;
+                                            System.out.println("Returning to ordering menu");
+                                            break;
+                                        default:
+                                            System.out.println("Invalid choice, try again!");
+                                    }
+                                }
                                 break;
                             case 2:
                                 break;
@@ -46,6 +73,8 @@ public class UserInterface {
                                 orderRunning = false;
                                 System.out.println("Returning to Home Screen");
                                 break;
+                            default:
+                                System.out.println("Invalid choice, try again!");
                         }
                     }
                     break;
@@ -53,6 +82,8 @@ public class UserInterface {
                     appRunning = false;
                     System.out.println("Thank you for visiting The DELIcious Sandwiches, Have a nice day!");
                     break;
+                default:
+                    System.out.println("Invalid choice, try again!");
             }
         }
     }
@@ -153,5 +184,30 @@ public class UserInterface {
         }
         return confirm;
     }
+    public static int sandwichScreen(){
+        int choice = -1;
+        System.out.println("\n\n" +
+                "----------Sandwich Screen---------" +
+                "\n\t1) Bread Type" +
+                "\n\t2) Size" +
+                "\n\t3) Toppings" +
+                "\n\t4) Toast the Bread" +
+                "\n\t0) Cancel Order" +
+                "\nWhat would you like to do?");
+        if(myScanner.hasNextInt()) {
+            choice = myScanner.nextInt();
+            myScanner.nextLine();
+            if (choice >= 0 && choice <= 4) {
+                return choice;
+            } else {
+                System.out.println("Please choose a valid input between 0 and 4");
+            }
+        }else{
+            myScanner.nextLine();
+            System.out.println("Invalid input!");
+        }
+        return choice;
+    }
+
 
 }

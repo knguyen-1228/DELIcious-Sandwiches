@@ -30,7 +30,7 @@ public class RecieptWriter {
     }
     public static String getDateTime(){
         LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("'Date:' MM-dd-yyyy 'Time:' HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("'Date:' EEEE,MMM d,yyyy 'Time:' HH:mm");
         return now.format(formatter);
     }
     public static void printReceipt(){
