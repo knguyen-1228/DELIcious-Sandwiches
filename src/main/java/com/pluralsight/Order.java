@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Order {
     private List<Order> orders;
@@ -10,8 +11,19 @@ public class Order {
         this.orders = orders;
         this.totalPrice = totalPrice;
     }
-    public static void addSandwich(){
+    public Sandwiches addSandwich(Scanner scanner){
+        String bread = Sandwiches.breadType(scanner);
+        int size = Sandwiches.sandwichSize(scanner);
+        boolean toasted = Sandwiches.isToasted(scanner);
+        List<String> meat = Sandwiches.addMeat(scanner);
+        List<String> cheese = Sandwiches.addCheese(scanner);
+        List<String> toppings = Sandwiches.addToppings(scanner);
+        List<String> sauces = Sandwiches.addSauce(scanner);
+        Sandwiches sandwich = new Sandwiches(bread,size,toasted,meat,cheese,toppings,sauces,price)
 
+        double price = Sandwiches.getPrice();
+
+        return new Sandwiches(bread,size,toasted,meat,cheese,toppings,sauces,price);
     }
     public static void addDrink(){
 
