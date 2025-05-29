@@ -7,7 +7,8 @@ public class UserInterface {
     static Scanner myScanner = new Scanner(System.in);
 
     public static void display(){
-        /*loadingBar("Loading", 25,60);*/
+        loadingBar("Loading", 25,60);
+        Order order = new Order();
         boolean appRunning = true;
         while(appRunning){
             int userChoice = homeScreen();
@@ -18,28 +19,17 @@ public class UserInterface {
                         int orderChoice = orderScreen();
                         switch(orderChoice){
                             case 1:
+                                order.addSandwich(myScanner);
                                 boolean sandwichRunning = true;
                                 while(sandwichRunning){
                                     int sandwichChoice = sandwichScreen();
                                     switch (sandwichChoice){
                                         case 1:
-                                            Sandwiches.breadType(myScanner);
+                                            order.addSandwich(myScanner);
                                             break;
                                         case 2:
-                                            Sandwiches.sandwichSize(myScanner);
-                                            break;
-                                        case 3:
-                                            Sandwiches.addMeat(myScanner);
-                                            Sandwiches.addCheese(myScanner);
-                                            Sandwiches.addToppings(myScanner);
-                                            Sandwiches.addSauce(myScanner);
-                                            break;
-                                        case 4:
-                                            Sandwiches.isToasted(myScanner);
-                                            break;
-                                        case 0:
+                                            order.getOrderSummary();
                                             sandwichRunning = false;
-                                            System.out.println("Returning to ordering menu");
                                             break;
                                         default:
                                             System.out.println("Invalid choice, try again!");
@@ -47,16 +37,19 @@ public class UserInterface {
                                 }
                                 break;
                             case 2:
+                                order.addDrink(myScanner);
                                 break;
                             case 3:
+                                order.addChips(myScanner);
                                 break;
                             case 4:
                                 boolean confRunning = true;
                                 while(confRunning){
+                                    order.getOrderSummary();
                                     int confInput = confirmation();
                                     switch(confInput){
                                         case 1:
-                                            RecieptWriter.saveReceipt();
+                                            RecieptWriter.saveReceipt(order);
                                             RecieptWriter.printReceipt();
                                             confRunning = false;
                                             orderRunning = false;
@@ -188,11 +181,8 @@ public class UserInterface {
         int choice = -1;
         System.out.println("\n\n" +
                 "----------Sandwich Screen---------" +
-                "\n\t1) Bread Type" +
-                "\n\t2) Size" +
-                "\n\t3) Toppings" +
-                "\n\t4) Toast the Bread" +
-                "\n\t0) Cancel Order" +
+                "\n\t1) Add Another Sandwich" +
+                "\n\t2) View Order Summary" +
                 "\nWhat would you like to do?");
         if(myScanner.hasNextInt()) {
             choice = myScanner.nextInt();

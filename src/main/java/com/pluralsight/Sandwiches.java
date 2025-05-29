@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Sandwiches {
 
     private String breadType;
-    private static int breadSize;
+    private int breadSize;
     private boolean isToasted;
     private List<String> meat;
     private List<String> cheese;
@@ -390,8 +390,31 @@ public class Sandwiches {
         return price;
 
     }
-    public static void getSummary(){
+    public String getSummary(){
+        StringBuilder summary = new StringBuilder();
+        summary.append("\tBread Type: ").append(breadType)
+                .append("\n\tBread Size: ").append(breadSize)
+                .append("\n\tToasted: ").append((isToasted ? "Yes" : "No"))
+                .append("\n\tMeat\n");
 
+        for(String m: meat){
+            summary.append("\t\t- ").append(m).append("\n");
+        }
+
+        summary.append("\tCheese: \n");
+        for(String c: cheese){
+            summary.append("\t\t- ").append(c).append("\n");
+        }
+        summary.append("\tToppings: \n");
+        for(String t: toppings){
+            summary.append("\t\t- ").append(t).append("\n");
+        }
+        summary.append("\tSauces: \n");
+        for(String s: sauces){
+            summary.append("\t\t- ").append(s).append("\n");
+        }
+
+        return summary.toString();
     }
 
     public String getBreadType() {
