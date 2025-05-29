@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 public class RecieptWriter {
 
-    private static final String filePath ="src/main/resources/receipts.csv";
+    private static final String filePath ="src/main/resources/receipts.txt";
 
     public static void saveReceipt(Order order){
         try {

@@ -1,34 +1,15 @@
 -------------------------------------------------
 				DELIcious Sandwich
-Date: Thursday,May 29,2025 Time: 14:13
+Date: Thursday,May 29,2025 Time: 14:17
 =================================================
 Order Summary: 
-Sandwich #1:
-	Bread Type: white
-	Bread Size: 4
-	Toasted: Yes
-	Meat
-		- Steak
-	Cheese: 
-		- American
-	Toppings: 
-		- Lettuce
-		- Onions
-		- Tomatoes
-	Sauces: 
-		- Mayo
-		- Mustard
-
-
 Drink: 
-Small Coke $2.00
-
 Chips: 
 Lay's $1.50
 
-Subtotal price: $10.75
-Tax: $0.89
-Total price: $11.64
+Subtotal price: $1.50
+Tax: $0.12
+Total price: $1.62
 -------------------------------------------------
 	Thank you for dining at DELIcious Sandwich
 =================================================

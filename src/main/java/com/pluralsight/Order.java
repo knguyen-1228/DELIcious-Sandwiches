@@ -56,7 +56,7 @@ public class Order {
         System.out.println("----------Order Summary---------");
         int count = 1;
         for(Sandwiches s: sandwiches){
-            System.out.println("Sandwich #" + count + ":");
+            System.out.println("Sandwich #" + count + ": $" + s.getPrice());
             System.out.println(s.getSummary());
             System.out.println();
             count++;
